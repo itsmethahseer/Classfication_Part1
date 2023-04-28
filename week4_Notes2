@@ -1,0 +1,9 @@
+-->Logistic Regression:it is one of the technique used to solve classification algorithm.
+Logistic regression will apply on both binary and multiclass classifications.
+curve of logistic regression is like s curve, that is rigit function , which maps the set of all into between 0 and 1.
+equation for the function is,for a probablility p, logit(x)= ln p-ln 1-p=ln(p/1-p)
+
+-->The confusion_matrix is a matrix which shows the visualization of the predicting status of a specific model.
+
+-->Naive bayse assemption is that features in the dataset is independent each other.
+-->It is used to sparm detection,whether detection,face detection and news article catogorization

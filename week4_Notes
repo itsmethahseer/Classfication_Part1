@@ -1,0 +1,142 @@
+-->independent variables in the machine learning is called Features. and dependent variable is called target variable.
+
+-->classification is a superwised algorithm that calculate the discrete class of a problem, for example price of a house is above 5000000 or below 5000000.
+-->when your dataset is highly scatterd you can not follow a logistic regression . so you want to use decision tree.
+
+
+-->Feature selection:it is the process of providing the best optimal features/columns to our machine learning model to get best accurate results.That means we want to remove the irrelevent features from our dataset and pass only relevent datasets to our machine learning model.
+When during feature selection you want to select optimal features and remove the irrelevent features.
+
+-->Importance of Feature selections are
+        ->Reduce the curse of  dimensionality reduction.
+        that means when you are working with lots of features that means lots of columns it becomes a difficult dataset so by removing irrelevent features so reduce dimensionality.
+        ->minimize the cost of computation.
+        that means you are working with less features.
+        ->learning the model by providing the best features to the training algorithm.
+        ->it helps to achive in very good accuracy
+        
+        
+-->Various Feature selection statistics:
+        ->we take input variables in X-axis and output variables in Y-axis . both variables may be catogoric or numeric.if both input and output variables are catogorical we use "chi-square test" . Now if your input variable is numeric and output variable is catogoric then use ANOVA or kendall's rank coefficient.You can use the same test when your input variable is catogoric and output variable is numeric.
+        Now if your both input and output variables are numeric you can use karl-pearson's coefficient or spearsman's coefficient of correlation.These are all we using when selecting the best features.
+        
+        
+-->In Feature selection techniques we have 1)Supervised feature selection 2)Unsupervised feature selection.
+in unsupervised feature selection we do not require the output of the target variables.where are as in supervised we need it.
+
+->In supervised feature selection there are 3 methods 
+        1)Filter methods
+        2)Embedded methods 
+        3)Wrapper methods
+    -> These methods are generally used while doing the pre-processing step. These methods select features from the dataset irrespective of the use of any machine learning algorithm. In terms of computation, they are very fast and inexpensive and are very good for removing duplicated, correlated, redundant features but these methods do not remove multicollinearity. Selection of feature is evaluated individually which can sometimes help when features are in isolation (don’t have a dependency on other features) but will lag when a combination of features can lead to increase in the overall performance of the model.  
+    ->Filter methods are a)information gain==)which reduces the entropy(randomness in our dataset).decision tree,random forest use this to reduce the randomness in the dataset.
+                         b)chi-square test ==)which determines the relationships between the catogorical varibles.
+                         c)Fisher's score==) Return the rank of the feature in the descending order.Based on these ranking we select best feature.
+                         d)Missing value ratio==)evaluate the feature set against threshold value.(Threshold value is calculated by trail and error or by statistical methods such as correlation coefficient or p-value.features having the value above threshold value we select it and below threshold value we remove that feature.
+                         
+                         
+     ->Wrapper methods include , first select a subset and do view performance and compare with other subsets.
+     ->it includes:1)Forward Selection:Begin with empty set of features with each iteration keeps adding on features and evaluates the model                    performance id improved or not.
+                   2)Backword elimination:Begin with all the features and in each iteration removes the least significant feature.
+                   3)Exhaustive feature selection:This is a best feature selection method and it calculates the each feature as a brute                        force.it tries to make each combination of the feature and returning best feature dataset.
+                   4)Recursive feature elimination:it works greedy optimization approach by takes recursively smaller and smaller subset of                    features.
+                   
+     -> Embedded methods are the combination of both filter and wrapper methods.And they create best subset of features.They combine the advantages of both filter methods and wrapper methods.
+     Embedded techniques are 1)Regularizaiton techniques like L1,L2 or elastic nets.
+                             L1 is nothing but lasso regression , L2 is ridge regression ,elastic nets are the combination of the both lasso                              and ridge regression. This method adds a penalty to different parameters of the machine learning model to avoid                              over-fitting of the model.
+                             
+                             2)Random forest,Tress based methods for feature selection.
+                             
+-->Removing Features with low varience:
+        The classes in the sklearn.feature_selection module can be used for feature selection/dimensionality reduction on sample sets, either to improve estimators’ accuracy scores or to boost their performance on very high-dimensional datasets.VarianceThreshold is a simple baseline approach to feature selection. It removes all features whose variance doesn’t meet some threshold. By default, it removes all zero-variance features, i.e. features that have the same value in all samples.As an example, suppose that we have a dataset with boolean features, and we want to remove all features that are either one or zero (on or off) in more than 80% of the samples. Boolean features are Bernoulli random variables, and the variance of such variables is given by
+        var(X)=p(1-p) 
+        
+        
+-->Univariate feature selection:
+This include the a)SelectKBest b)SelectPercentile  c)genericUnivariateSelect
+for regression we use:r-regression,f-regression and mutual-info-regression.
+for classification we use:chi-2,f-classic,mutual-info-classic
+
+-->The L1 (or Lasso) regularization technique is applied to the features, which forces some of them to have a zero coefficient, effectively eliminating them from the model.
+                         
+                         
+                         
+-->Some techniques in wrapper methods:
+1)    Forward selection – This method is an iterative approach where we initially start with an empty set of features and keep adding a feature which best improves our model after each iteration. The stopping criterion is till the addition of a new variable does not improve the performance of the model.
+2)    Backward elimination – This method is also an iterative approach where we initially start with all features and after each iteration, we remove the least significant feature. The stopping criterion is till no improvement in the performance of the model is observed after the feature is removed.
+3)    Bi-directional elimination – This method uses both forward selection and backward elimination technique simultaneously to reach one unique solution.
+4)    Exhaustive selection – This technique is considered as the brute force approach for the evaluation of feature subsets. It creates all possible subsets and builds a learning algorithm for each subset and selects the subset whose model’s performance is best.
+5)    Recursive elimination – This greedy optimization method selects features by recursively considering the smaller and smaller set of features. The estimator is trained on an initial set of features and their importance is obtained using feature_importance_attribute. The least important features are then removed from the current set of features till we are left with the required number of features.
+
+-->In recursive feature elimination they accepts two argument one is algorithm and other is required features.
+if our dataset have 10 features then the choosed algorithm is calculate least one feature and remove that, then it works on 9 features same way, then continue this process until reach our required features.
+                         
+-->Some of the classification concepts :
+
+
+1. Features: Features are the characteristics or attributes of the input data that are used to make predictions. For example, in an image classification task, the features may include the colors, textures, and shapes of the pixels in the image.
+
+2. Training data: Training data is the data that is used to train a classification model. The model learns to recognize patterns in the training data and use those patterns to make predictions on new data.
+
+3. Labels: Labels are the categories or classes that the classification model is trying to predict. For example, in a spam classification task, the labels may be "spam" or "not spam".
+
+4. Model: A model is the algorithm or set of rules that the classification system uses to make predictions. The model is trained on the training data and is then used to classify new, unseen data.
+
+5. Evaluation: Evaluation is the process of measuring the performance of a classification model. This is typically done by comparing the predicted labels of the model to the true labels of the test data.
+
+6. Overfitting: Overfitting occurs when a model is too complex and fits the training data too closely, resulting in poor performance on new, unseen data.
+
+7. Regularization: Regularization is a technique used to prevent overfitting by adding a penalty term to the model's cost function, which encourages simpler models.
+
+8. Ensemble learning: Ensemble learning is a technique where multiple models are trained on the same data and their predictions are combined to make a final prediction. This can lead to better performance than using a single model.
+                         
+                         
+                         
+-->Steps in L1-based feature selection:
+L1-based feature selection can be implemented in several ways, depending on the specific machine learning library or framework being used. Here, we will provide a high-level overview of the implementation steps in Python using the scikit-learn library:
+
+1. Load the data: Load the dataset into a pandas dataframe or numpy array.
+
+2. Split the data: Split the data into training and testing sets.
+
+3. Scale the data: Scale the data to ensure that all features are on the same scale. This can be done using a scaler object from scikit-learn, such as the StandardScaler.
+
+4. Fit a linear model: Fit a linear model on the training data using the LinearRegression class from scikit-learn.
+
+5. Apply L1 regularization: Apply L1 regularization to the model using the Lasso class from scikit-learn. This can be done by setting the "penalty" parameter to "l1" when creating the Lasso object.
+
+6. Select important features: Retrieve the important features by selecting the coefficients that are non-zero in the fitted Lasso model.
+
+7. Train a final model: Train a final model using only the important features selected in step 6. This can be done by fitting a new linear model on the training data using only the selected features.
+
+8. Evaluate the model: Evaluate the performance of the final model on the testing data.
+
+This is a high-level overview of the implementation steps for L1-based feature selection in scikit-learn. However, the specific implementation details may vary depending on the specific requirements of the dataset and the machine learning problem being tackled.
+                         
+                         
+-->The feature_importances_ attribute returns an array of scores, where each score corresponds to the importance of a specific feature in the model. The scores are calculated based on how much the tree nodes that use each feature improve the model's performance on the training set.
+
+In general, a higher score indicates a more important feature.                        
+                         
+                         
+-->Feature engineering techniques are precesses used to extract usefull information from raw data using math,statistics and domain knowledge.The basic examples of feature engineering are handling missing values,outliers detection,On hot encoding etc.
+->Another important feature engineering technique is feature extraction:
+
+            feature extraction includes *dimensionality reduction:Reducing the number of features by transforming the data into a lower-                                             dimensional space while retaining important information
+                                        *Feature Combination: Combining two or more existing features to create a new one. For example, the                                         interaction between two features.
+                                        *Feature Aggregation: Aggregating features to create a new one. For example, calculating the mean,                                            sum, or count of a set of features.
+                                        *Feature Transformation: Transforming existing features into a new representation. For example, log                                          transformation of a feature with a skewed distribution.
+                                        
+
+
+
+
+
+
+
+
+
+
+
+
+        
